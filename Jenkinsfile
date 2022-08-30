@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment{
+        GITHUB_KEY = credentials ('github')
+    }
 
     stages{
         stage('testing'){
@@ -20,7 +23,7 @@ pipeline{
                     sudo mkdir html
                     cd html
                     sudo git init
-                    sudo git remote add origin 
+                    sudo git remote add origin https://$GITHUB_KEY_USR:$GITHUB_KEY_PSW@github.com/Jadesolax/isaac.git
                     sudo git pull origin master
                     
 
